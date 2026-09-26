@@ -2,6 +2,7 @@
 
 Tidy every GitHub repo you own: descriptions, licenses, topics, stale forks, archive candidates. Dry run first, always.
 
+[![Marketplace](https://img.shields.io/badge/Marketplace-Repo%20Hygiene%20Janitor-blue?style=flat-square&logo=github)](https://github.com/marketplace/actions/repo-hygiene-janitor)
 [![CI](https://github.com/mk24x7/janitor/actions/workflows/ci.yml/badge.svg)](https://github.com/mk24x7/janitor/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@mk24x7/janitor.svg)](https://www.npmjs.com/package/@mk24x7/janitor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
