@@ -6,6 +6,12 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-09-26
+
+### Changed
+
+- The GitHub Action is listed as "Repo Hygiene Janitor"; "Repo Janitor" is also taken on the Marketplace.
+
 ## [1.0.1] - 2026-09-26
 
 ### Changed
@@ -32,6 +38,7 @@ All notable changes to this project are documented here. The format follows
 - Rate limit handling, a concurrency cap of 4 and ETag caching in `~/.janitor/cache/`.
 - GitHub Action (`node24`) that writes a Markdown job summary.
 
-[Unreleased]: https://github.com/mk24x7/janitor/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/mk24x7/janitor/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/mk24x7/janitor/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/mk24x7/janitor/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/mk24x7/janitor/releases/tag/v1.0.0
