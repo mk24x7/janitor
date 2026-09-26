@@ -1,0 +1,54 @@
+name: Rule request
+description: Suggest a new audit rule or fix.
+labels: ["rule-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        janitor rules must be cheap to evaluate (a few API requests per repository) and must never
+        suggest changing visibility or deleting anything.
+  - type: input
+    id: id
+    attributes:
+      label: Proposed rule id
+      placeholder: stale-issues
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - medium
+        - low
+        - info
+    validations:
+      required: true
+  - type: textarea
+    id: condition
+    attributes:
+      label: When should it fire?
+      description: The exact condition, including thresholds.
+      placeholder: Any open issue with no activity for more than 2 years.
+    validations:
+      required: true
+  - type: textarea
+    id: api
+    attributes:
+      label: How can it be detected?
+      description: The REST endpoints and fields involved, and what should happen when the token cannot read them.
+    validations:
+      required: true
+  - type: dropdown
+    id: fix
+    attributes:
+      label: Can janitor fix it safely?
+      options:
+        - No, report only (manual)
+        - Yes, with a reversible metadata change
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it useful?

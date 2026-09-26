@@ -110,3 +110,13 @@ test('findings are sorted by severity and carry fixable-by', () => {
   assert.deepEqual(findings.map((f) => f.severity), ['medium', 'low', 'info']);
   assert.equal(findings[0].fixableBy, 'janitor fix');
 });
+
+test('README rules table lists every rule with its severity and fixable-by', async () => {
+  const { readFileSync } = await import('node:fs');
+  const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8');
+  for (const rule of RULES) {
+    const fix = rule.fixableBy === 'manual' ? 'manual' : `\`${rule.fixableBy}\``;
+    const row = new RegExp(`^\\| \`${rule.id}\` \\| ${rule.severity} \\| .+ \\| ${fix.replace(/[.*+?^${}()|[\]\\-]/g, '\\$&')} \\|$`, 'm');
+    assert.match(readme, row, rule.id);
+  }
+});
