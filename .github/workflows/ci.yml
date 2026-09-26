@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: npm test
+        run: npm test
+
+      - name: CLI smoke test
+        run: |
+          node src/cli.js --version
+          node src/cli.js --help
+
+  hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: ASCII only
+        run: scripts/check-ascii.sh
+
+      - name: dist is up to date
+        run: |
+          node scripts/build-dist.js
+          if ! git diff --exit-code -- dist || [ -n "$(git status --porcelain -- dist)" ]; then
+            echo "::error::dist/ is stale; run npm run build and commit the result"
+            exit 1
+          fi
+
+      - name: Package contents
+        run: npm pack --dry-run
+
+  action:
+    name: Action smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Run the action from this checkout (audit, public repositories)
+        id: janitor
+        uses: ./
+        with:
+          command: audit
+          args: --min-severity medium
+
+      - name: Outputs are set
+        run: |
+          test -n "${{ steps.janitor.outputs.exit-code }}"
+          echo "findings=${{ steps.janitor.outputs.findings }}"

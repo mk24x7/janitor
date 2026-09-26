@@ -1,0 +1,36 @@
+name: janitor
+description: Audit every GitHub repository you own for hygiene gaps (descriptions, licenses, topics, stale forks, archive candidates).
+author: Mukul Kumar Yadav
+branding:
+  icon: check-square
+  color: green
+inputs:
+  token:
+    description: >
+      Token used for the GitHub API. The default GITHUB_TOKEN can only see
+      public repositories of the repository owner; use a personal access token
+      (stored as a secret) to include private repositories.
+    required: false
+    default: ${{ github.token }}
+  command:
+    description: janitor command to run (audit, fix, license, archive, forks, topics).
+    required: false
+    default: audit
+  args:
+    description: Extra command-line arguments, for example "--include-forks --min-severity low".
+    required: false
+    default: ''
+  fail-on-findings:
+    description: Fail the step (exit 3) when the command reports findings or pending changes.
+    required: false
+    default: 'false'
+outputs:
+  findings:
+    description: Number of findings (audit) or pending changes (other commands).
+  exit-code:
+    description: janitor exit code before fail-on-findings is applied (0, 1, 2 or 3).
+  result:
+    description: The full JSON result.
+runs:
+  using: node24
+  main: dist/index.js
