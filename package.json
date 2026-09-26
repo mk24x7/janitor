@@ -1,6 +1,6 @@
 {
   "name": "@mk24x7/janitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tidy every GitHub repo you own: descriptions, licenses, topics, stale forks, archive candidates. Dry run first, always.",
   "type": "module",
   "license": "MIT",

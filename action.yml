@@ -1,4 +1,4 @@
-name: janitor
+name: 'Repo Janitor'
 description: Audit every GitHub repository you own for hygiene gaps (descriptions, licenses, topics, stale forks, archive candidates).
 author: Mukul Kumar Yadav
 branding:
