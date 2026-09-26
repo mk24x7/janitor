@@ -1,0 +1,34 @@
+[
+  {
+    "name": "alpha",
+    "full_name": "mk/alpha",
+    "owner": { "login": "mk" },
+    "private": false,
+    "visibility": "public",
+    "fork": false,
+    "archived": false,
+    "description": "Alpha project",
+    "topics": ["cli"],
+    "license": { "key": "mit", "spdx_id": "MIT" },
+    "default_branch": "main",
+    "pushed_at": "2026-08-01T00:00:00Z",
+    "stargazers_count": 5,
+    "size": 120
+  },
+  {
+    "name": "beta",
+    "full_name": "mk/beta",
+    "owner": { "login": "mk" },
+    "private": true,
+    "visibility": "private",
+    "fork": false,
+    "archived": false,
+    "description": null,
+    "topics": [],
+    "license": null,
+    "default_branch": "master",
+    "pushed_at": "2021-01-01T00:00:00Z",
+    "stargazers_count": 0,
+    "size": 40
+  }
+]
