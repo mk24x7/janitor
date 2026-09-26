@@ -1,0 +1,50 @@
+{
+  "name": "@mk24x7/janitor",
+  "version": "1.0.0",
+  "description": "Tidy every GitHub repo you own: descriptions, licenses, topics, stale forks, archive candidates. Dry run first, always.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Mukul Kumar Yadav",
+  "bin": {
+    "janitor": "src/cli.js"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk24x7/janitor.git"
+  },
+  "homepage": "https://github.com/mk24x7/janitor#readme",
+  "bugs": {
+    "url": "https://github.com/mk24x7/janitor/issues"
+  },
+  "keywords": [
+    "github",
+    "repository",
+    "hygiene",
+    "audit",
+    "cli",
+    "github-action",
+    "topics",
+    "license",
+    "archive",
+    "forks"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "node scripts/build-dist.js",
+    "check:ascii": "scripts/check-ascii.sh",
+    "check:dist": "node scripts/build-dist.js && git diff --exit-code -- dist"
+  }
+}
