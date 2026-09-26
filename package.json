@@ -38,8 +38,7 @@
     "forks"
   ],
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "scripts": {
     "test": "node --test test/*.test.js",
